@@ -4,17 +4,15 @@
 #
 Name     : perl-Geo-Distance
 Version  : 0.20
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.20.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-distance-perl/libgeo-distance-perl_0.20-4.debian.tar.xz
 Summary  : 'Calculate Distances and Closest Locations'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0 GPL-3.0
-Requires: perl-Geo-Distance-license
-Requires: perl-Geo-Distance-man
-Requires: perl(Test::Fatal)
-Requires: perl(Try::Tiny)
+Requires: perl-Geo-Distance-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::Fatal)
 BuildRequires : perl(Try::Tiny)
 
@@ -22,6 +20,15 @@ BuildRequires : perl(Try::Tiny)
 This archive contains the distribution Geo-Distance,
 version 0.20:
 Calculate Distances and Closest Locations
+
+%package dev
+Summary: dev components for the perl-Geo-Distance package.
+Group: Development
+Provides: perl-Geo-Distance-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Geo-Distance package.
+
 
 %package license
 Summary: license components for the perl-Geo-Distance package.
@@ -31,19 +38,11 @@ Group: Default
 license components for the perl-Geo-Distance package.
 
 
-%package man
-Summary: man components for the perl-Geo-Distance package.
-Group: Default
-
-%description man
-man components for the perl-Geo-Distance package.
-
-
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n Geo-Distance-0.20
-mkdir -p %{_topdir}/BUILD/Geo-Distance-0.20/deblicense/
+cd ..
+%setup -q -T -D -n Geo-Distance-0.20 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Geo-Distance-0.20/deblicense/
 
 %build
@@ -68,13 +67,13 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Geo-Distance
-cp LICENSE %{buildroot}/usr/share/doc/perl-Geo-Distance/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/doc/perl-Geo-Distance/deblicense_copyright
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Geo-Distance
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/LICENSE
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/deblicense_copyright
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -83,13 +82,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Geo/Distance.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Geo/Distance.pm
 
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-Geo-Distance/LICENSE
-/usr/share/doc/perl-Geo-Distance/deblicense_copyright
-
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Geo::Distance.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Geo-Distance/LICENSE
+/usr/share/package-licenses/perl-Geo-Distance/deblicense_copyright
