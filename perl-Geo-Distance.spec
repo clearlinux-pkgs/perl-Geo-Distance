@@ -82,7 +82,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Geo/Distance.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Geo/Distance.pm
 
 %files dev
 %defattr(-,root,root,-)
