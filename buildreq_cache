@@ -1,3 +1,7 @@
-0.20
+0.21
+perl(ExtUtils::Config)
+perl(ExtUtils::Helpers)
+perl(ExtUtils::InstallPaths)
+perl(Module::Build::Tiny)
 perl(Test::Fatal)
 perl(Try::Tiny)
