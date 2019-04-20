@@ -4,7 +4,7 @@
 #
 Name     : perl-Geo-Distance
 Version  : 0.24
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.24.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.24.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-distance-perl/libgeo-distance-perl_0.20-4.debian.tar.xz
@@ -17,6 +17,8 @@ BuildRequires : perl(ExtUtils::Config)
 BuildRequires : perl(ExtUtils::Helpers)
 BuildRequires : perl(ExtUtils::InstallPaths)
 BuildRequires : perl(Module::Build::Tiny)
+BuildRequires : perl(Test::Fatal)
+BuildRequires : perl(Try::Tiny)
 
 %description
 # NAME
