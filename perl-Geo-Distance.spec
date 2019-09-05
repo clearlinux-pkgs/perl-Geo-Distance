@@ -4,14 +4,15 @@
 #
 Name     : perl-Geo-Distance
 Version  : 0.24
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.24.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.24.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-distance-perl/libgeo-distance-perl_0.20-4.debian.tar.xz
-Summary  : Geo::Distance - Perl interface to calculate geo distance from latitude and longitude
+Summary  : 'Calculate distances and closest locations. (DEPRECATED)'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0 GPL-3.0
 Requires: perl-Geo-Distance-license = %{version}-%{release}
+Requires: perl(GIS::Distance)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(ExtUtils::Config)
 BuildRequires : perl(ExtUtils::Helpers)
@@ -54,7 +55,7 @@ cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Geo-Distance-0.24/deblicense/
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
