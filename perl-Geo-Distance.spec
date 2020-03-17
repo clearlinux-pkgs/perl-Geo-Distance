@@ -4,7 +4,7 @@
 #
 Name     : perl-Geo-Distance
 Version  : 0.24
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.24.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.24.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-distance-perl/libgeo-distance-perl_0.20-4.debian.tar.xz
@@ -80,7 +80,7 @@ fi
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Geo-Distance
 cp %{_builddir}/Geo-Distance-0.24/LICENSE %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/224f103b390d1c8dbaaf3d9660fea6bad84bbaa5
-cp %{_builddir}/Geo-Distance-0.24/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/efe1960f196dd212adbf29482417e5023045cb83
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/efe1960f196dd212adbf29482417e5023045cb83
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -105,4 +105,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Geo/Distance.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Geo/Distance.pm
