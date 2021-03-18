@@ -4,13 +4,13 @@
 #
 Name     : perl-Geo-Distance
 Version  : 0.25
-Release  : 20
+Release  : 21
 URL      : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.25.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-distance-perl/libgeo-distance-perl_0.20-4.debian.tar.xz
 Summary  : 'Calculate distances and closest locations. (DEPRECATED)'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl GPL-3.0
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0 GPL-3.0
 Requires: perl-Geo-Distance-license = %{version}-%{release}
 Requires: perl-Geo-Distance-perl = %{version}-%{release}
 Requires: perl(Const::Fast)
@@ -77,6 +77,7 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Geo-Distance
+cp %{_builddir}/Geo-Distance-0.25/LICENSE %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/4a00d254c05e24e334448bc9019e3c4c8820f616
 cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Geo-Distance/efe1960f196dd212adbf29482417e5023045cb83
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
@@ -97,8 +98,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Geo-Distance/4a00d254c05e24e334448bc9019e3c4c8820f616
 /usr/share/package-licenses/perl-Geo-Distance/efe1960f196dd212adbf29482417e5023045cb83
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/Geo/Distance.pm
+/usr/lib/perl5/vendor_perl/5.32.1/Geo/Distance.pm
