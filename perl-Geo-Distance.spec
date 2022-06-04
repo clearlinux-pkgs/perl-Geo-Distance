@@ -4,7 +4,7 @@
 #
 Name     : perl-Geo-Distance
 Version  : 0.25
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Geo-Distance-0.25.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-distance-perl/libgeo-distance-perl_0.20-4.debian.tar.xz
@@ -103,4 +103,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Geo/Distance.pm
+/usr/lib/perl5/*
